@@ -1,5 +1,15 @@
 .App {
   padding: 0 30px;
+
+}
+
+
+h1:hover{
+  transform: scale(1.1); /* Aumenta o tamanho do item ao passar o mouse sobre ele */
+  transform-origin: left center; /* Define a origem da transformação no lado esquerdo do item */
+  transition: 0.3s;
+
+
 }
 
 

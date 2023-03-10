@@ -8,6 +8,6 @@ const Comentario = props => (
     <p>{props.children}</p>
     <p>{props.data.toString()}</p>
     </div>
-);
+)
 
 export default Comentario;
