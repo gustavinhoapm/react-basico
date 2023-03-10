@@ -21,10 +21,17 @@ state = {
       mensagem: 'Olá. tudo bem sim e voce?'
     }
 
-  ]
+  ],
+  novoComentario: {
+    nome: '',
+    email: '',
+    mensagem: ''
+  }
 }
 
-adicionarComentario = () =>{
+adicionarComentario = evento =>{
+
+  evento.preventDefault();
   console.log("Adicionando comentario")
 
   const novoComentario = {
@@ -38,9 +45,11 @@ adicionarComentario = () =>{
 //lista.push(novoComentario);
 //this.setState({ comentarios: lista})
 
-this.setState({
-  comentarios: [ ...this.state.comentarios, novoComentario]
-})
+this.setState({comentario: [...this.state.comentarios, novoComentario ]})
+}
+
+digitacaoDoNome = evento =>{
+  console.log(evento)
 }
 
   render(){
@@ -61,7 +70,37 @@ this.setState({
         ))}
        
      
-          <button onClick={this.adicionarComentario} >Adicionar um comentario</button>
+          <form method="post" onSubmit={this.adicionarComentario}>
+            <h2>Adicionar Comentario</h2>
+            <div>
+              <input 
+              type="text"
+               name="nome"
+               value={this.state.novoComentario.nome}
+               onChange={this.digitacaoDoNome}
+               placeholder="Digite seu Nome"/>
+            </div>
+
+            <div>
+              <input 
+              type="email" 
+              name="email"
+              value={this.state.novoComentario.email}
+              placeholder="Digite seu Email"/>
+            </div>
+          
+
+          <div>
+            <textarea 
+            name="mensagem"
+            value={this.state.novoComentario.mensagem}
+            rows="4" />
+          </div>
+
+
+          <button 
+          type="submit">Adicionar um comentario</button>
+          </form>
       </div>
     );
   }
